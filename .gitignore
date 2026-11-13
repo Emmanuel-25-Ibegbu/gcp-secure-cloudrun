@@ -1,0 +1,19 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!terraform.tfvars.example
+tfplan
+crash.log
+
+# Keys and local env. Never commit these.
+*key*.json
+keys/
+.env
+env.sh
+
+# Python
+__pycache__/
+*.pyc
+.venv/

@@ -1,0 +1,19 @@
+# Ready answers for ./scripts/checkpoint.sh <step>
+# Format: step|commit message|why|how to undo
+02-setup|chore: repo layout, gitignore, changelog, helper scripts|Track every change in Git with a change note from day one|Delete the added files. No cloud change.
+03-audit|audit: baseline security review and before evidence|Record the insecure starting state as proof for the bank review|Phase 13 removes legacy-deployer, its key, legacy-api, and the default network. Delete evidence/before to remove the files.
+04-foundation|feat(terraform): state backend, providers, enabled APIs|Infrastructure is code, reviewed and repeatable|Run terraform destroy. Delete the state bucket with gcloud storage rm -r gs://PROJECT_ID-tfstate. APIs stay on by design.
+05-network|feat(network): custom VPC, subnet with flow logs, deny-by-default firewall|Network isolation and traffic evidence for the review|Remove network.tf and firewall.tf, then run ./scripts/tf.sh 05-network-undo
+06-iam|feat(iam): per-job service accounts and keyless GitHub login (WIF)|Least privilege, no service-account keys, keyless CI/CD|Remove iam.tf and wif.tf, then run ./scripts/tf.sh 06-iam-undo. A deleted pool ID cannot be reused for 30 days.
+07-registry-secrets|feat: Artifact Registry, Secret Manager secret, versioned data bucket|Trusted image store, no plain-text secrets, recoverable data|Remove registry.tf, secrets.tf, storage.tf, then run ./scripts/tf.sh 07-undo. Disable secret versions with gcloud secrets versions disable.
+08-app|feat(app): Flask API with health, status, and gated fault routes|A small API to deploy and test the pipeline and alerts|Revert this commit with git revert. No cloud change.
+09-cloudrun|feat(cloudrun): secure-api service with Secret Manager env and VPC egress|Managed runtime with a dedicated identity and no plain-text secrets|Remove cloudrun.tf, then run ./scripts/tf.sh 09-undo. For a bad release, roll back with gcloud run services update-traffic.
+10-pipeline|ci: keyless build, push, and deploy pipeline plus Terraform checks|Repeatable deployments with no stored keys|Disable the workflow in the GitHub Actions tab. Roll back a release with gcloud run services update-traffic.
+10-evidence|docs: keyless pipeline proof (Actions run, no keys, image list)|Show the auditor that CI/CD uses no stored keys|Delete the evidence files. No cloud change.
+11-logging|feat(logging): data access audit logs, 180-day security log bucket and sink|Audit trail kept 180 days for the bank review|Remove logging.tf, then run ./scripts/tf.sh 11-undo. A deleted log bucket can be restored for 7 days with gcloud logging buckets undelete.
+12-monitoring|feat(monitoring): uptime check and Slack alerts for downtime, errors, latency|The team learns about problems before customers do|Remove monitoring.tf, then run ./scripts/tf.sh 12-undo. Remove the Slack channel in Monitoring notification channels.
+12-alert-tests|test: alert tests with Slack screenshots|Prove each alert fires and resolves|Delete the screenshots. Test settings were already removed from Cloud Run.
+13-remediation|fix(security): remediate findings F1 to F6 with after evidence|Close the misconfigurations found in the baseline review|Recreate firewall rules from evidence/before/rule-*.json. Restore service accounts within 30 days with gcloud iam service-accounts undelete. Deleted keys stay deleted by design.
+14-restore|test: restore test with timing, hashes, and audit log proof|Prove deleted data can be recovered and how fast|Delete the test file from the bucket. No other change.
+15-docs|docs: evidence pack, architecture, runbook, README, weekly update template|Hand over everything the team and auditors need|Revert this commit with git revert. No cloud change.
+16-release|chore: final checks before v1.0 handover|Mark the audit-ready version|Delete the tag with git push --delete origin v1.0
