@@ -45,3 +45,11 @@ Every change: what was done, why, and how to undo it.
   - terraform/wif.tf
 - Why: Why: Least-privilege identities and keyless CI/CD code ready for when the GCP trial is active
 - Undo: How to undo: git revert this commit. No cloud change.
+
+## 2026-11-14 16:31 | Commit message: feat: Artifact Registry, Secret Manager secret, versioned data bucket, not applied yet
+- Files changed:
+  - terraform/registry.tf
+  - terraform/secrets.tf
+  - terraform/storage.tf
+- Why: Why: Trusted image store, no plain-text secrets, recoverable data
+- Undo: How to undo: git revert this commit. No cloud change yet.
