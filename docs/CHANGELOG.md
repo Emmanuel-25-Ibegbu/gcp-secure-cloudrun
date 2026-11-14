@@ -18,3 +18,9 @@ Every change: what was done, why, and how to undo it.
   - docs/findings.md
 - Why: Record the insecure starting state as proof for the bank review
 - Undo: Phase 13 removes legacy-deployer, its key, legacy-api, and the default network. Delete evidence/before to remove the files.
+
+## 2026-11-14 13:51 | feat(terraform): state backend, providers, enabled APIs
+- Files changed:
+  - terraform/
+- Why: Infrastructure is code, reviewed and repeatable
+- Undo: Run terraform destroy. Delete the state bucket with gcloud storage rm -r gs://PROJECT_ID-tfstate. APIs stay on by design.
