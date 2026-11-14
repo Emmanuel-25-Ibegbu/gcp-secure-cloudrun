@@ -24,3 +24,16 @@ Every change: what was done, why, and how to undo it.
   - terraform/
 - Why: Infrastructure is code, reviewed and repeatable
 - Undo: Run terraform destroy. Delete the state bucket with gcloud storage rm -r gs://PROJECT_ID-tfstate. APIs stay on by design.
+
+## 2026-11-14 15:28 | Commit message: feat(terraform): network, firewall, and org policies behind a switch (not applied yet)
+- Files changed:
+  - terraform/terraform.tfvars.example
+  - terraform/variables.tf
+  - --location=us-central1
+  - --public-access-prevention
+  - --uniform-bucket-level-access
+  - terraform/firewall.tf
+  - terraform/network.tf
+  - terraform/org-policy.tf
+- Why: Why: Network isolation and guardrail code ready for when the GCP trial is active
+- Undo: How to undo: git revert this commit. No cloud change.
