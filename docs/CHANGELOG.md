@@ -37,3 +37,11 @@ Every change: what was done, why, and how to undo it.
   - terraform/org-policy.tf
 - Why: Why: Network isolation and guardrail code ready for when the GCP trial is active
 - Undo: How to undo: git revert this commit. No cloud change.
+
+## 2026-11-14 16:11 | Commit message: feat(iam): service accounts, keyless GitHub login, outputs (not applied yet)
+- Files changed:
+  - terraform/iam.tf
+  - terraform/outputs.tf
+  - terraform/wif.tf
+- Why: Why: Least-privilege identities and keyless CI/CD code ready for when the GCP trial is active
+- Undo: How to undo: git revert this commit. No cloud change.
