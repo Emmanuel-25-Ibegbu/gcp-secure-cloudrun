@@ -78,3 +78,9 @@ Every change: what was done, why, and how to undo it.
   - .github/workflows/terraform-checks.yml
 - Why: Pipeline code ready before cloud access
 - Undo: git revert this commit. No cloud change.
+
+## 2026-11-15 18:54 | feat(logging): data access audit logs, 180-day security log bucket and sink, not applied yet
+- Files changed:
+  - terraform/logging.tf
+- Why: Audit trail kept 180 days for the bank review
+- Undo: git revert this commit. No cloud change yet.
