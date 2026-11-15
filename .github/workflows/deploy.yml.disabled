@@ -1,0 +1,71 @@
+name: Build and deploy secure-api
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write   # lets GitHub mint the OIDC token for WIF
+
+env:
+  PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+  REGION: ${{ vars.GCP_REGION }}
+  SERVICE: secure-api
+  REPO: secure-api
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud (keyless)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOYER_SA }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker "${REGION}-docker.pkg.dev" --quiet
+
+      - name: Build and push image
+        run: |
+          IMAGE="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/api:${GITHUB_SHA}"
+          docker build -t "$IMAGE" app
+          docker push "$IMAGE"
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE }}
+          region: ${{ env.REGION }}
+          image: ${{ env.IMAGE }}
+          skip_default_labels: true
+
+      - name: Smoke test
+        run: |
+          curl --fail --silent --show-error "${{ steps.deploy.outputs.url }}/health"
+          curl --fail --silent --show-error "${{ steps.deploy.outputs.url }}/api/v1/status"
+
+      - name: Deployment record
+        run: |
+          {
+            echo "## Deployment"
+            echo "| Item | Value |"
+            echo "|---|---|"
+            echo "| Commit | ${GITHUB_SHA} |"
+            echo "| Image | ${IMAGE} |"
+            echo "| URL | ${{ steps.deploy.outputs.url }} |"
+            echo "| Time (UTC) | $(date -u +%Y-%m-%dT%H:%M:%SZ) |"
+          } >> "$GITHUB_STEP_SUMMARY"

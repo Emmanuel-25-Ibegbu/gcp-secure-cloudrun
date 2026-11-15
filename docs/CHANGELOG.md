@@ -71,3 +71,10 @@ Every change: what was done, why, and how to undo it.
   - docs/CHANGELOG.md
 - Why: Change log entries had repeated labels
 - Undo: git revert this commit
+
+## 2026-11-15 16:40 | ci: add deploy pipeline (disabled until GCP is ready) and Terraform checks
+- Files changed:
+  - .github/workflows/deploy.yml.disabled
+  - .github/workflows/terraform-checks.yml
+- Why: Pipeline code ready before cloud access
+- Undo: git revert this commit. No cloud change.
