@@ -59,3 +59,9 @@ Every change: what was done, why, and how to undo it.
   - app/
 - Why: A small API to deploy and test the pipeline and alerts
 - Undo: Revert this commit with git revert. No cloud change.
+
+## 2026-11-15 16:05 | feat(cloudrun): secure-api service with Secret Manager env and VPC egress, not applied yet
+- Files changed:
+  - terraform/cloudrun.tf
+- Why: Managed runtime with a dedicated identity and no plain-text secrets
+- Undo: it revert this commit. No cloud change yet.
