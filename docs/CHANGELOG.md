@@ -53,3 +53,9 @@ Every change: what was done, why, and how to undo it.
   - terraform/storage.tf
 - Why: Why: Trusted image store, no plain-text secrets, recoverable data
 - Undo: How to undo: git revert this commit. No cloud change yet.
+
+## 2026-11-15 15:39 | feat(app): Flask API with health, status, and gated fault routes
+- Files changed:
+  - app/
+- Why: A small API to deploy and test the pipeline and alerts
+- Undo: Revert this commit with git revert. No cloud change.
