@@ -22,6 +22,8 @@ No modules.
 |------|------|
 | [google_artifact_registry_repository.api](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository) | resource |
 | [google_artifact_registry_repository_iam_member.deployer_writer](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository_iam_member) | resource |
+| [google_cloud_run_v2_service.api](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_run_v2_service) | resource |
+| [google_cloud_run_v2_service_iam_member.public_invoker](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_run_v2_service_iam_member) | resource |
 | [google_compute_firewall.deny_all_egress](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall) | resource |
 | [google_compute_firewall.deny_all_ingress](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall) | resource |
 | [google_compute_network.vpc](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network) | resource |
@@ -56,6 +58,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_api_url"></a> [api\_url](#output\_api\_url) | n/a |
 | <a name="output_deployer_email"></a> [deployer\_email](#output\_deployer\_email) | n/a |
 | <a name="output_runtime_email"></a> [runtime\_email](#output\_runtime\_email) | n/a |
 | <a name="output_wif_provider"></a> [wif\_provider](#output\_wif\_provider) | n/a |
