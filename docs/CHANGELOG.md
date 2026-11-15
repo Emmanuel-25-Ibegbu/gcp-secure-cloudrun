@@ -84,3 +84,9 @@ Every change: what was done, why, and how to undo it.
   - terraform/logging.tf
 - Why: Audit trail kept 180 days for the bank review
 - Undo: git revert this commit. No cloud change yet.
+
+## 2026-11-15 19:06 | feat(monitoring): uptime check and Slack alerts for downtime, errors, latency, not applied yet
+- Files changed:
+  - terraform/monitoring.tf
+- Why: The team learns about problems before customers do
+- Undo: git revert this commit. No cloud change yet.
