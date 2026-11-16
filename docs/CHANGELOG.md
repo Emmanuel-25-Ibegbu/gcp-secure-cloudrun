@@ -106,3 +106,9 @@ Every change: what was done, why, and how to undo it.
   - docs/week-01.md
 - Why: Hand over everything the team and auditors need
 - Undo: Revert this commit with git revert. No cloud change.
+
+## 2026-11-16 15:20 | docs: evidence pack, architecture, runbook, README, weekly update template
+- Files changed:
+  - docs/evidence-pack.md
+- Why: Hand over everything the team and auditors need
+- Undo: Revert this commit with git revert. No cloud change.
