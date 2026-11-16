@@ -1,0 +1,13 @@
+# Week 1 update
+
+Done
+- ...
+
+Next week
+- ...
+
+Blockers or decisions needed from you
+- ...
+
+Changes made this week (details and undo steps in docs/CHANGELOG.md)
+- ...

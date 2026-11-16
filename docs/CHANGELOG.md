@@ -96,3 +96,13 @@ Every change: what was done, why, and how to undo it.
   - docs/restore-test.md
 - Why: Ready to record steps, timing, and proof when the test runs
 - Undo: git revert this commit. No cloud change.
+
+## 2026-11-16 15:16 | docs: evidence pack, architecture, runbook, README, weekly update template
+- Files changed:
+  - README.md
+  - docs/architecture.md
+  - docs/evidence-pack.md
+  - docs/runbook.md
+  - docs/week-01.md
+- Why: Hand over everything the team and auditors need
+- Undo: Revert this commit with git revert. No cloud change.
