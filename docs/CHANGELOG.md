@@ -90,3 +90,9 @@ Every change: what was done, why, and how to undo it.
   - terraform/monitoring.tf
 - Why: The team learns about problems before customers do
 - Undo: git revert this commit. No cloud change yet.
+
+## 2026-11-16 14:01 | docs: restore test template, test not run yet
+- Files changed:
+  - docs/restore-test.md
+- Why: Ready to record steps, timing, and proof when the test runs
+- Undo: git revert this commit. No cloud change.
