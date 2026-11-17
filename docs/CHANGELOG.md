@@ -112,3 +112,9 @@ Every change: what was done, why, and how to undo it.
   - docs/evidence-pack.md
 - Why: Hand over everything the team and auditors need
 - Undo: Revert this commit with git revert. No cloud change.
+
+## 2026-11-17 14:33 | docs: align Mermaid diagram with draw.io diagram
+- Files changed:
+  - docs/architecture.md
+- Why: Both diagrams must show the same flows for the review
+- Undo: git revert this commit. No cloud change.
