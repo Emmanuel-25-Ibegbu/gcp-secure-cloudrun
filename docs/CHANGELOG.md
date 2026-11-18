@@ -118,3 +118,9 @@ Every change: what was done, why, and how to undo it.
   - docs/architecture.md
 - Why: Both diagrams must show the same flows for the review
 - Undo: git revert this commit. No cloud change.
+
+## 2026-11-18 11:24 | docs: add draw.io architecture diagram and update Mermaid flowchart
+- Files changed:
+  - docs/images/
+- Why: Show the full request, deploy, data and logging flows in one diagram that matches the Terraform design.
+- Undo: git revert this commit. Docs only, no cloud change.
