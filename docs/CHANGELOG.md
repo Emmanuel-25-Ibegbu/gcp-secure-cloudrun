@@ -124,3 +124,9 @@ Every change: what was done, why, and how to undo it.
   - docs/images/
 - Why: Show the full request, deploy, data and logging flows in one diagram that matches the Terraform design.
 - Undo: git revert this commit. Docs only, no cloud change.
+
+## 2026-11-18 12:00 | docs: show architecture diagram at the top of the README
+- Files changed:
+  - README.md
+- Why: Auditors see the full architecture the moment they open the repo.
+- Undo: git revert this commit. Docs only, no cloud change.
