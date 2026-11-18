@@ -131,11 +131,6 @@ Every change: what was done, why, and how to undo it.
 - Why: Auditors see the full architecture the moment they open the repo.
 - Undo: git revert this commit. Docs only, no cloud change.
 
-## 2026-11-18 | CI | terraform-docs bot
-- What: A GitHub Actions step regenerates the table in terraform/README.md after Terraform changes and commits it as github-actions[bot].
-- Why: Keeps the Terraform inputs and outputs table in sync with the code.
-- Undo: Delete the terraform-docs step in the workflow file, or set git-push to false.
-
 ## 2026-11-18 13:09 | ci: terraform-docs bot regenerates the table in terraform/README.md
 - Files changed:
   - docs/CHANGELOG.md
